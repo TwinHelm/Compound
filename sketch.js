@@ -1,6 +1,7 @@
 function setup() {
   //Set canvas to full window width and height
-  createCanvas(windowWidth, windowHeight);
+  var mainCanvas = createCanvas(windowWidth, windowHeight);
+      mainCanvas.parent("main");
 }
 
 function windowResized() {
