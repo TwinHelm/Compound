@@ -58,17 +58,17 @@ function draw() {
   var xPos = 50;
   var yPos = 100;
   var yPosAlt = 65;
+  var spcScale = 150 + (ver * 4);
 
   inputArr.forEach((element, index) => {
     
-
     if(index > 0){
       xPos = xPos + 75;
       
       if (xPos > 1500){
         xPos = 50
-        yPos = yPos + 150;
-        yPosAlt = yPosAlt + 150;
+        yPos = yPos + spcScale;
+        yPosAlt = yPosAlt + spcScale;
       }
 
       if (element == 'i' || element == 'j' || element == 'l'){
@@ -243,18 +243,18 @@ function draw() {
     }
 
     else if (element == 'v'){
-      rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
-      rect(((xPos + 35) + hor), yPos + ver, w, h, 0, 0, 0, 0)
+      rect(xPos, yPos + ver, w, h, 0, 25, 0, 0)
+      rect(((xPos + 35) + hor), yPos + ver, w, h, 25, 0, 0, 0)
       rect(xPos, ((yPos + 35) + (ver * 2)), w, h, 0, 0, 0, 25)
       rect(((xPos + 35) + hor), ((yPos + 35) + (ver * 2)), w, h, 0, 0, 25, 0)
     }
 
     else if (element == 'w'){
-      rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
+      rect(xPos, yPos + ver, w, h, 0, 25, 0, 0)
       rect(((xPos + 35) + hor), yPos + ver, w, h, 0, 25, 0, 0)
       rect(xPos, ((yPos + 35) + (ver * 2)), w, h, 0, 0, 0, 25)
       rect(((xPos + 35) + hor), ((yPos + 35) + (ver * 2)), w, h, 0, 0, 0, 0)
-      rect(((xPos + (35*2)) + hor), yPos + ver, w, h, 0, 0, 0, 0)
+      rect(((xPos + (35*2)) + hor), yPos + ver, w, h, 0, 25, 0, 0)
       rect(((xPos + (35*2)) + hor), ((yPos + 35) + (ver * 2)), w, h, 0, 0, 25, 0)
 
       xPos = xPos + 35;
