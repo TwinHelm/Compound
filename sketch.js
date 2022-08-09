@@ -4,13 +4,12 @@ let h = 25;
 let hor = 0;
 let ver = 0;
 let gap = 35;
-var inputArr = [];
+let inputArr = [];
 let detectArr = [];
-
 
 function setup() {
   //Set canvas to full window width and height
-  var mainCanvas = createCanvas(windowWidth, windowHeight);
+  var mainCanvas = createCanvas(windowWidth, 1800);
       mainCanvas.parent("main");
 
       window.addEventListener('load', (event) => {
@@ -43,18 +42,20 @@ function setup() {
 
 function windowResized() {
   //Resize window width and height to new dimensions
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, 1800);
 }
 
 
 
 
 function draw() {
+
   //Set canvas background to near black
   background('#050505');
   fill(255);
   stroke(255);
 
+  //Initiliase variables for 
   var xPos = 50;
   var yPos = 100;
   var yPosAlt = 65;
