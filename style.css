@@ -12,6 +12,15 @@ canvas {
   display: block;
 }
 
+label{
+  font-family: Open Sans;
+  color: #b1b1b1;
+  font-size: 12px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  display: block;
+}
+
 #container {
   height: 100%;
   display: -ms-flexbox;
@@ -45,7 +54,9 @@ border-right: 1px solid #252525;
  -webkit-box-flex: 1;
  -moz-box-flex: 1;
  -ms-box-flex: 1;
- box-flex: 1;  
+ box-flex: 1;
+ width: 100%;
+ height: 1800px;  
 }
 
 .inputcontainer{
@@ -60,7 +71,7 @@ border-right: 1px solid #252525;
   border-radius: 0%;
   border: 1px solid #454545;
   background-color: #050505;
-  color: #606060;
+  color: #b1b1b1;
   padding-top: 5px;
   padding-bottom: 5px;
   text-indent: 5px;
@@ -71,7 +82,6 @@ border-right: 1px solid #252525;
   appearance: none;
   width: 100%; 
   height: 2px;
-  margin-top: 50px; 
   background: #454545; 
   outline: none;
   opacity: 0.8;
@@ -88,7 +98,7 @@ border-right: 1px solid #252525;
   appearance: none;
   width: 12px; 
   height: 17px; 
-  background: #606060; 
+  background: #b1b1b1; 
   outline: none;
   cursor: pointer; 
   border-radius: 0%;
@@ -99,7 +109,7 @@ border-right: 1px solid #252525;
   width: 12px; 
   height: 17px; 
   outline: none;
-  background: #606060; 
+  background: #b1b1b1; 
   cursor: pointer; 
   border-radius: 0%;
   border: none;
