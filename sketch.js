@@ -69,7 +69,7 @@ function changeTheme() {
         if(colCheck == '#0d0e12'){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
-          root.style.setProperty('--border', '#90979e');
+          root.style.setProperty('--border', '#82888f');
           colMode = "light";
         }
         else if(colCheck = '#bdd1ff'){
@@ -154,7 +154,7 @@ function colTheme(colID){
         else if (colMode == "light"){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
-          root.style.setProperty('--border', '#90979e');
+          root.style.setProperty('--border', '#82888f');
         }
         break;
 
