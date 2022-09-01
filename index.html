@@ -12,6 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+
+
     <!-- Import p5 libraries -->
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
@@ -24,18 +31,62 @@
       <div id="sidebar">
         <div class="inputcontainer">
           <input type="text" id="uInput" class="textInput" name="userInput" autocomplete="off" required minlength="0" maxlength="60" size="25" placeholder="Type your message here.">
-          <label>Width</label>
-          <input type="range" min="25" max="100" value="25" class="slider" autocomplete="off" id="width">
-          <label>Height</label>
-          <input type="range" min="25" max="100" value="25" class="slider" autocomplete="off" id="height">
-          <label>Corner Radius</label>
-          <input type="range" min="0" max="50" value="25" class="slider" autocomplete="off" id="curve">
-        </div>
-        
+          <div class="paraGroup">
+            <label>Width</label>
+            <input type="range" min="25" max="100" value="25" class="slider" autocomplete="off" id="width">
+          </div>
+          <div class="paraGroup">
+            <label>Height</label>
+            <input type="range" min="25" max="100" value="25" class="slider" autocomplete="off" id="height">
+          </div>
+          <div class="paraGroup">
+            <label>Corner</label>
+            <input type="range" min="0" max="50" value="25" class="slider" autocomplete="off" id="curve">
+          </div>
+          <div class="checkCtr">
+            <span class="material-symbols-outlined checkOff" onclick="checkSet();"" id="outline">
+              check_box_outline_blank
+            </span>
+            <label class="checkLbl">Outline</label>  
+          </div>
+        </div>  
+
+      <div class="hr"></div>
+      <div>
+        <span class="material-symbols-outlined theme" onclick="changeTheme();">
+          contrast
+        </span>
       </div>
+      <div>
+        <span class="material-symbols-outlined themeCircle" id="1" onclick="colTheme(this.id);" style="margin-left:80px;color:#dfdfdf">
+          circle
+        </span>
+      </div>
+      <div>
+        <span class="material-symbols-outlined themeCircle" id="2" onclick="colTheme(this.id);" style="margin-left:120px;color:#ddffee;">
+          circle
+        </span>
+      </div>
+      <div>
+        <span class="material-symbols-outlined themeCircle" id="3" onclick="colTheme(this.id);" style="margin-left:160px;color:#ffdddd;">
+          circle
+        </span>
+      </div>
+      <div>
+        <span class="material-symbols-outlined themeCircle" id="4" onclick="colTheme(this.id);" style="margin-left:200px;color:#bdd1ff;">
+          circle
+        </span>
+      </div>
+      <div>
+        <span class="material-symbols-outlined themeCircle" id="5" onclick="colTheme(this.id);" style="margin-left:240px;color:#ffffdb;">
+          circle
+        </span>
+      </div>
+
       
-      <div id="main">
-      </div>
+    </div>
+    <div id="main">
+    </div>
     </div>
 
     <script src="sketch.js"></script>
