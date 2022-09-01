@@ -39,13 +39,13 @@ function changeTheme() {
       if(colCheck == '#0d1210'){
         root.style.setProperty('--primary', '#ddffee');
         root.style.setProperty('--secondary', '#1a2923');
-        root.style.setProperty('--border', '#999999');
+        root.style.setProperty('--border', '#949c97');
         colMode = "light";
       }
       else if(colCheck = '#ddffee'){
         root.style.setProperty('--primary', '#0d1210');
         root.style.setProperty('--secondary', '#ddffee');
-        root.style.setProperty('--border', '#252525');
+        root.style.setProperty('--border', '#242927');
         colMode = "dark";
       }
       break;
@@ -54,13 +54,13 @@ function changeTheme() {
       if(colCheck == '#120d0d'){
         root.style.setProperty('--primary', '#ffdddd');
         root.style.setProperty('--secondary', '#291a1a');
-        root.style.setProperty('--border', '#999999');
+        root.style.setProperty('--border', '#9e9090');
         colMode = "light";
       }
       else if(colCheck = '#ffdddd'){
         root.style.setProperty('--primary', '#120d0d');
         root.style.setProperty('--secondary', '#ffdddd');
-        root.style.setProperty('--border', '#252525');
+        root.style.setProperty('--border', '#2b2727');
         colMode = "dark";
       }
       break;
@@ -69,13 +69,13 @@ function changeTheme() {
         if(colCheck == '#0d0e12'){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
-          root.style.setProperty('--border', '#999999');
+          root.style.setProperty('--border', '#90979e');
           colMode = "light";
         }
         else if(colCheck = '#bdd1ff'){
           root.style.setProperty('--primary', '#0d0e12');
           root.style.setProperty('--secondary', '#bdd1ff');
-          root.style.setProperty('--border', '#252525');
+          root.style.setProperty('--border', '#282b2e');
           colMode = "dark";
         }
         break;
@@ -84,13 +84,13 @@ function changeTheme() {
           if(colCheck == '#17170e'){
             root.style.setProperty('--primary', '#ffffdb');
             root.style.setProperty('--secondary', '#242416');
-            root.style.setProperty('--border', '#999999');
+            root.style.setProperty('--border', '#9e9b90');
             colMode = "light";
           }
           else if(colCheck = '#ffffdb'){
             root.style.setProperty('--primary', '#17170e');
             root.style.setProperty('--secondary', '#ffffdb');
-            root.style.setProperty('--border', '#252525');
+            root.style.setProperty('--border', '#2b2b23');
             colMode = "dark";
           }
           break;
@@ -120,12 +120,12 @@ function colTheme(colID){
       if(colMode == "dark"){
         root.style.setProperty('--primary', '#0d1210');
         root.style.setProperty('--secondary', '#ddffee');
-        root.style.setProperty('--border', '#252525');
+        root.style.setProperty('--border', '#242927');
       }
       else if (colMode == "light"){
         root.style.setProperty('--primary', '#ddffee');
         root.style.setProperty('--secondary', '#1a2923');
-        root.style.setProperty('--border', '#999999');
+        root.style.setProperty('--border', '#949c97');
       }
       print(colCheck)
       break;
@@ -135,12 +135,12 @@ function colTheme(colID){
       if(colMode == "dark"){
         root.style.setProperty('--primary', '#120d0d');
         root.style.setProperty('--secondary', '#ffdddd');
-        root.style.setProperty('--border', '#252525');
+        root.style.setProperty('--border', '#2b2727');
       }
       else if (colMode == "light"){
         root.style.setProperty('--primary', '#ffdddd');
         root.style.setProperty('--secondary', '#291a1a');
-        root.style.setProperty('--border', '#999999');
+        root.style.setProperty('--border', '#9e9090');
       }
       break;
 
@@ -149,12 +149,12 @@ function colTheme(colID){
         if(colMode == "dark"){
           root.style.setProperty('--primary', '#0d0e12');
           root.style.setProperty('--secondary', '#bdd1ff');
-          root.style.setProperty('--border', '#252525');
+          root.style.setProperty('--border', '#282b2e');
         }
         else if (colMode == "light"){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
-          root.style.setProperty('--border', '#999999');
+          root.style.setProperty('--border', '#90979e');
         }
         break;
 
@@ -163,12 +163,12 @@ function colTheme(colID){
           if(colMode == "dark"){
             root.style.setProperty('--primary', '#17170e');
             root.style.setProperty('--secondary', '#ffffdb');
-            root.style.setProperty('--border', '#252525');
+            root.style.setProperty('--border', '#2b2b23');
           }
           else if (colMode == "light"){
             root.style.setProperty('--primary', '#ffffdb');
             root.style.setProperty('--secondary', '#242416');
-            root.style.setProperty('--border', '#999999');
+            root.style.setProperty('--border', '#9e9b90');
           }
           break;
 
