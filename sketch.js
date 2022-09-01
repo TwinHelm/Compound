@@ -1,3 +1,8 @@
+let root = document.documentElement;
+let colSetting = "default";
+let outlineState = "false";
+let colMode = "dark";
+
 //Initiliase variables for affecting shape coordinates
 let w = 25;
 let h = 25;
@@ -7,6 +12,184 @@ let g = 35;
 let c = 25;
 let inputArr = [];
 let detectArr = [];
+
+
+function changeTheme() {
+  
+  var colCheck = getComputedStyle(root).getPropertyValue('--primary');
+
+  switch(colSetting){
+
+    case 'default':
+      if(colCheck == '#080808'){
+        root.style.setProperty('--primary', '#dfdfdf');
+        root.style.setProperty('--secondary', '#080808');
+        root.style.setProperty('--border', '#999999');
+        colMode = "light";
+      }
+      else if(colCheck = '#dfdfdf'){
+        root.style.setProperty('--primary', '#080808');
+        root.style.setProperty('--secondary', '#b1b1b1');
+        root.style.setProperty('--border', '#252525');
+        colMode = "dark";
+      }
+      break;
+
+      case 'green':
+      if(colCheck == '#0d1210'){
+        root.style.setProperty('--primary', '#ddffee');
+        root.style.setProperty('--secondary', '#1a2923');
+        root.style.setProperty('--border', '#999999');
+        colMode = "light";
+      }
+      else if(colCheck = '#ddffee'){
+        root.style.setProperty('--primary', '#0d1210');
+        root.style.setProperty('--secondary', '#ddffee');
+        root.style.setProperty('--border', '#252525');
+        colMode = "dark";
+      }
+      break;
+
+      case 'red':
+      if(colCheck == '#120d0d'){
+        root.style.setProperty('--primary', '#ffdddd');
+        root.style.setProperty('--secondary', '#291a1a');
+        root.style.setProperty('--border', '#999999');
+        colMode = "light";
+      }
+      else if(colCheck = '#ffdddd'){
+        root.style.setProperty('--primary', '#120d0d');
+        root.style.setProperty('--secondary', '#ffdddd');
+        root.style.setProperty('--border', '#252525');
+        colMode = "dark";
+      }
+      break;
+
+      case 'blue':
+        if(colCheck == '#0d0e12'){
+          root.style.setProperty('--primary', '#bdd1ff');
+          root.style.setProperty('--secondary', '#1a2129');
+          root.style.setProperty('--border', '#999999');
+          colMode = "light";
+        }
+        else if(colCheck = '#bdd1ff'){
+          root.style.setProperty('--primary', '#0d0e12');
+          root.style.setProperty('--secondary', '#bdd1ff');
+          root.style.setProperty('--border', '#252525');
+          colMode = "dark";
+        }
+        break;
+
+        case 'yellow':
+          if(colCheck == '#17170e'){
+            root.style.setProperty('--primary', '#ffffdb');
+            root.style.setProperty('--secondary', '#242416');
+            root.style.setProperty('--border', '#999999');
+            colMode = "light";
+          }
+          else if(colCheck = '#ffffdb'){
+            root.style.setProperty('--primary', '#17170e');
+            root.style.setProperty('--secondary', '#ffffdb');
+            root.style.setProperty('--border', '#252525');
+            colMode = "dark";
+          }
+          break;
+  }
+}
+
+function colTheme(colID){
+  var colSet = Number(colID);
+  switch (colSet){
+
+    case 1:
+      colSetting = "default";
+      if(colMode == "dark"){
+        root.style.setProperty('--primary', '#080808');
+        root.style.setProperty('--secondary', '#b1b1b1');
+        root.style.setProperty('--border', '#252525');
+      }
+      else if (colMode == "light"){
+        root.style.setProperty('--primary', '#dfdfdf');
+        root.style.setProperty('--secondary', '#080808');
+        root.style.setProperty('--border', '#999999');
+      }
+      break;
+    
+    case 2:
+      colSetting = "green";
+      if(colMode == "dark"){
+        root.style.setProperty('--primary', '#0d1210');
+        root.style.setProperty('--secondary', '#ddffee');
+        root.style.setProperty('--border', '#252525');
+      }
+      else if (colMode == "light"){
+        root.style.setProperty('--primary', '#ddffee');
+        root.style.setProperty('--secondary', '#1a2923');
+        root.style.setProperty('--border', '#999999');
+      }
+      print(colCheck)
+      break;
+
+    case 3:
+      colSetting = "red";
+      if(colMode == "dark"){
+        root.style.setProperty('--primary', '#120d0d');
+        root.style.setProperty('--secondary', '#ffdddd');
+        root.style.setProperty('--border', '#252525');
+      }
+      else if (colMode == "light"){
+        root.style.setProperty('--primary', '#ffdddd');
+        root.style.setProperty('--secondary', '#291a1a');
+        root.style.setProperty('--border', '#999999');
+      }
+      break;
+
+      case 4:
+        colSetting = "blue";
+        if(colMode == "dark"){
+          root.style.setProperty('--primary', '#0d0e12');
+          root.style.setProperty('--secondary', '#bdd1ff');
+          root.style.setProperty('--border', '#252525');
+        }
+        else if (colMode == "light"){
+          root.style.setProperty('--primary', '#bdd1ff');
+          root.style.setProperty('--secondary', '#1a2129');
+          root.style.setProperty('--border', '#999999');
+        }
+        break;
+
+        case 5:
+          colSetting = "yellow";
+          if(colMode == "dark"){
+            root.style.setProperty('--primary', '#17170e');
+            root.style.setProperty('--secondary', '#ffffdb');
+            root.style.setProperty('--border', '#252525');
+          }
+          else if (colMode == "light"){
+            root.style.setProperty('--primary', '#ffffdb');
+            root.style.setProperty('--secondary', '#242416');
+            root.style.setProperty('--border', '#999999');
+          }
+          break;
+
+  }
+}
+
+function checkSet(){
+  var checkState = String(document.getElementById('outline').innerHTML.replace(/\s/g, ''));
+
+  console.log(checkState);
+
+  if(checkState == 'check_box_outline_blank'){
+    document.getElementById('outline').innerHTML = "check_box";
+    outlineState = true;
+  }
+  else if(checkState == 'check_box'){
+    document.getElementById('outline').innerHTML = "check_box_outline_blank";
+    outlineState = false;
+  }
+}
+
 
 function setup() {
 
@@ -19,13 +202,12 @@ function setup() {
 
       window.addEventListener('load', (event) => {
         inputArr = document.getElementById('uInput').String(userInput.value).split('');
-        print(inputArr)
       });
 
     //Detect user input in text field, split into array
     const userInput = document.getElementById('uInput');
     userInput.addEventListener('input', function(evt){
-      inputArr = String(userInput.value).split('');
+      inputArr = String(userInput.value).toLowerCase().split('');
       print(inputArr);
     });      
 
@@ -54,10 +236,17 @@ function setup() {
 
 function draw() {
 
+  var setBg = getComputedStyle(root).getPropertyValue('--primary');
+  var setFill = getComputedStyle(root).getPropertyValue('--secondary');
   //Set canvas background to near black
-  background('#050505');
-  fill(255);
-  stroke(255);
+  background(setBg);
+  if(outlineState == true){
+    noFill();
+  }
+  else{
+    fill(setFill);
+  }
+  stroke(setFill);
 
   //Initiliase variables for 
   var xPos = 50;
