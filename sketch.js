@@ -2,6 +2,11 @@ let root = document.documentElement;
 let colSetting = "default";
 let outlineState = "false";
 let colMode = "dark";
+var svgState = false;
+const svgForExport = [];
+
+var xConfig = 0;
+var yConfig = 0;
 
 //Initiliase variables for affecting shape coordinates
 let w = 25;
@@ -13,6 +18,22 @@ let c = 25;
 let inputArr = [];
 let detectArr = [];
 
+window.onload = (event) => {
+  paramCheck();
+  if(svgState === true){
+    document.getElementById('export').disabled = false;
+  }
+};
+
+function paramCheck(){
+  const url = new URL(window.location.href);
+  const params = new URLSearchParams(url.search);
+
+  svgState = (params.get('svgState') === 'true');
+  inputArr = params.getAll('inputArr');
+  ySVG = Number(params.get('yConfig')) + 40;
+  xSVG = Number(params.get('xConfig'));
+}
 
 function changeTheme() {
   
@@ -21,7 +42,7 @@ function changeTheme() {
   switch(colSetting){
 
     case 'default':
-      if(colCheck == '#080808'){
+      if(colCheck === '#080808'){
         root.style.setProperty('--primary', '#dfdfdf');
         root.style.setProperty('--secondary', '#080808');
         root.style.setProperty('--border', '#999999');
@@ -29,14 +50,14 @@ function changeTheme() {
       }
       else if(colCheck = '#dfdfdf'){
         root.style.setProperty('--primary', '#080808');
-        root.style.setProperty('--secondary', '#b1b1b1');
+        root.style.setProperty('--secondary', '#dfdfdf');
         root.style.setProperty('--border', '#252525');
         colMode = "dark";
       }
       break;
 
       case 'green':
-      if(colCheck == '#0d1210'){
+      if(colCheck === '#0d1210'){
         root.style.setProperty('--primary', '#ddffee');
         root.style.setProperty('--secondary', '#1a2923');
         root.style.setProperty('--border', '#949c97');
@@ -51,7 +72,7 @@ function changeTheme() {
       break;
 
       case 'red':
-      if(colCheck == '#120d0d'){
+      if(colCheck === '#120d0d'){
         root.style.setProperty('--primary', '#ffdddd');
         root.style.setProperty('--secondary', '#291a1a');
         root.style.setProperty('--border', '#9e9090');
@@ -66,7 +87,7 @@ function changeTheme() {
       break;
 
       case 'blue':
-        if(colCheck == '#0d0e12'){
+        if(colCheck === '#0d0e12'){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
           root.style.setProperty('--border', '#82888f');
@@ -81,7 +102,7 @@ function changeTheme() {
         break;
 
         case 'yellow':
-          if(colCheck == '#17170e'){
+          if(colCheck === '#17170e'){
             root.style.setProperty('--primary', '#ffffdb');
             root.style.setProperty('--secondary', '#242416');
             root.style.setProperty('--border', '#9e9b90');
@@ -103,12 +124,12 @@ function colTheme(colID){
 
     case 1:
       colSetting = "default";
-      if(colMode == "dark"){
+      if(colMode === "dark"){
         root.style.setProperty('--primary', '#080808');
-        root.style.setProperty('--secondary', '#b1b1b1');
+        root.style.setProperty('--secondary', '#dfdfdf');
         root.style.setProperty('--border', '#252525');
       }
-      else if (colMode == "light"){
+      else if (colMode === "light"){
         root.style.setProperty('--primary', '#dfdfdf');
         root.style.setProperty('--secondary', '#080808');
         root.style.setProperty('--border', '#999999');
@@ -117,12 +138,12 @@ function colTheme(colID){
     
     case 2:
       colSetting = "green";
-      if(colMode == "dark"){
+      if(colMode === "dark"){
         root.style.setProperty('--primary', '#0d1210');
         root.style.setProperty('--secondary', '#ddffee');
         root.style.setProperty('--border', '#242927');
       }
-      else if (colMode == "light"){
+      else if (colMode === "light"){
         root.style.setProperty('--primary', '#ddffee');
         root.style.setProperty('--secondary', '#1a2923');
         root.style.setProperty('--border', '#949c97');
@@ -132,12 +153,12 @@ function colTheme(colID){
 
     case 3:
       colSetting = "red";
-      if(colMode == "dark"){
+      if(colMode === "dark"){
         root.style.setProperty('--primary', '#120d0d');
         root.style.setProperty('--secondary', '#ffdddd');
         root.style.setProperty('--border', '#2b2727');
       }
-      else if (colMode == "light"){
+      else if (colMode === "light"){
         root.style.setProperty('--primary', '#ffdddd');
         root.style.setProperty('--secondary', '#291a1a');
         root.style.setProperty('--border', '#9e9090');
@@ -146,12 +167,12 @@ function colTheme(colID){
 
       case 4:
         colSetting = "blue";
-        if(colMode == "dark"){
+        if(colMode === "dark"){
           root.style.setProperty('--primary', '#0d0e12');
           root.style.setProperty('--secondary', '#bdd1ff');
           root.style.setProperty('--border', '#282b2e');
         }
-        else if (colMode == "light"){
+        else if (colMode === "light"){
           root.style.setProperty('--primary', '#bdd1ff');
           root.style.setProperty('--secondary', '#1a2129');
           root.style.setProperty('--border', '#82888f');
@@ -160,12 +181,12 @@ function colTheme(colID){
 
         case 5:
           colSetting = "yellow";
-          if(colMode == "dark"){
+          if(colMode === "dark"){
             root.style.setProperty('--primary', '#17170e');
             root.style.setProperty('--secondary', '#ffffdb');
             root.style.setProperty('--border', '#2b2b23');
           }
-          else if (colMode == "light"){
+          else if (colMode === "light"){
             root.style.setProperty('--primary', '#ffffdb');
             root.style.setProperty('--secondary', '#242416');
             root.style.setProperty('--border', '#9e9b90');
@@ -180,16 +201,46 @@ function checkSet(){
 
   console.log(checkState);
 
-  if(checkState == 'check_box_outline_blank'){
+  if(checkState === 'check_box_outline_blank'){
     document.getElementById('outline').innerHTML = "check_box";
     outlineState = true;
   }
-  else if(checkState == 'check_box'){
+  else if(checkState === 'check_box'){
     document.getElementById('outline').innerHTML = "check_box_outline_blank";
     outlineState = false;
   }
 }
 
+function svgMode(){
+  const url = new URL(window.location.href + '?svgState=true&');
+  const params = new URLSearchParams(url.search);
+  params.set('inputArr', inputArr[0])
+
+  inputArr.forEach((element, index) => {
+    if (index > 0){
+      params.append('inputArr', element);
+    }
+
+  params.set('xConfig', xConfig);
+  params.set('yConfig', yConfig);
+  });
+
+
+  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  location.reload(); 
+}
+
+function checkSVG(){
+  var checkState = String(document.getElementById('svgmode').innerHTML.replace(/\s/g, ''));
+
+  if(checkState === 'check_box_outline_blank'){
+    document.getElementById('svgmode').innerHTML = "check_box";
+    svgMode();
+  }
+  else if(checkState === 'check_box'){
+    document.getElementById('svgmode').innerHTML = "check_box_outline_blank";
+  }
+}
 
 function setup() {
 
@@ -197,12 +248,18 @@ function setup() {
   canvasInfo = document.getElementById('main').getBoundingClientRect();
 
   //Set canvas width and height
-  var mainCanvas = createCanvas(canvasInfo.width, canvasInfo.height);
-      mainCanvas.parent("main");
+  if (svgState === true){
+    var mainCanvas = createCanvas(xSVG, ySVG, SVG);
+    mainCanvas.parent("main");
+  }
+  else{
+    var mainCanvas = createCanvas(canvasInfo.width, canvasInfo.height);
+    mainCanvas.parent("main");
+  }
 
-      window.addEventListener('load', (event) => {
-        inputArr = document.getElementById('uInput').String(userInput.value).split('');
-      });
+    window.addEventListener('load', (event) => {
+      inputArr = document.getElementById('uInput').String(userInput.value).split('');
+    });
 
     //Detect user input in text field, split into array
     const userInput = document.getElementById('uInput');
@@ -236,19 +293,20 @@ function setup() {
 
 function draw() {
 
-  var setBg = getComputedStyle(root).getPropertyValue('--primary');
+  if (svgState !== true){
+    var setBg = getComputedStyle(root).getPropertyValue('--primary');
+    background(setBg);
+  }
   var setFill = getComputedStyle(root).getPropertyValue('--secondary');
-  //Set canvas background to near black
-  background(setBg);
-  if(outlineState == true){
+
+  if(outlineState === true){
     noFill();
   }
   else{
     fill(setFill);
   }
   stroke(setFill);
-
-  //Initiliase variables for 
+ 
   var xPos = 50;
   var yPos = 100;
   var yPosAlt = 65;
@@ -259,15 +317,18 @@ function draw() {
     
     if(index > 0){
       xPos = xPos + 75;
+      xConfig = xPos + 100;
+      yConfig = yPosAlt + spcScale;
       
       //When the x position hits define boundary set a new line
-      if (xPos > 1500){
+      if (xPos > 1400){
+        xConfig = 1450
         xPos = 50
         yPos = yPos + spcScale;
         yPosAlt = yPosAlt + spcScale;
       }
 
-      if (element == 'i' || element == 'j' || element == 'l'){
+      if (element === 'i' || element === 'j' || element === 'l'){
         if(hor > 0){
           xPos = xPos - g - hor;
         }
@@ -478,14 +539,69 @@ function draw() {
         break;
     }
 
-    if (element == 'm' || element == 'w'){
+    if (element === 'm' || element === 'w'){
       xPos = xPos + (hor * 3);
     }    
-    else if(element == 'i'|| element == 'j' || element == 'l'){
+    else if(element === 'i'|| element === 'j' || element === 'l'){
       xPos = xPos + (hor * 2);
     }
     else {
       xPos = xPos + (hor * 2);
     }
   });
+
+  if(svgState === true){
+    noLoop();
+  }
+}
+
+function getSVG(){
+
+  function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  var findsvgTag = document.getElementsByTagName('svg');
+  var svgTagText = String(findsvgTag.item(0).outerHTML);
+
+  var start_pos = svgTagText.indexOf('<');
+  var end_pos = svgTagText.indexOf('>') + 1;
+  var svgArraytext = svgTagText.substring(start_pos,end_pos)
+  svgForExport.push(svgArraytext)
+  svgForExport.push("<g>")
+  print(svgForExport)
+  var findGroupList = document.getElementsByTagName("path");
+  var findGroup = [].slice.call(findGroupList);
+
+  findGroup.forEach((tag , index) => {
+
+    var pathTagText = String(tag.outerHTML);
+
+    var start_posC = pathTagText.indexOf('(') + 1;
+    var end_posC = pathTagText.indexOf(')');
+    var rgbColour = pathTagText.substring(start_posC,end_posC);
+    const rgbSplit = rgbColour.split(",").map(Number);
+    var hexColour = rgbToHex(rgbSplit[0],rgbSplit[1],rgbSplit[2]);
+    var comColour = getComputedStyle(root).getPropertyValue('--secondary');
+    if(String(hexColour) === String(comColour)){
+      svgForExport.push(String(tag.outerHTML))
+    }  
+  });
+
+  var remExisting = document.getElementById("defaultCanvas0");
+  while (remExisting.firstChild) {
+    remExisting.removeChild(remExisting.lastChild);
+  }
+
+  svgForExport.push("</g>")
+  svgForExport.push("</svg>")
+
+  svgForExport.join("");
+  document.getElementById("defaultCanvas0").innerHTML = svgForExport;
+
+}
+
+function exportSVG(){
+  getSVG();
+  save("export.svg");
 }
