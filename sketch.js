@@ -26,13 +26,16 @@ window.onload = (event) => {
   paramCheck();
 
   const url = String(window.location.href);
-  print(url)
+  
   if (url.includes("?") === true) {
     fillField = inputArr.join("");
     document.getElementById('uInput').value = fillField;
   }
 
-  print(outlineState)
+  if (url.includes("?") === false){
+    var random = Math.floor(Math.random() * 5) + 1;
+    colTheme(random);
+  }
 
   if(outlineState === true){
     document.getElementById('outline').innerHTML = "check_box";
