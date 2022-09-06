@@ -28,41 +28,69 @@ window.onload = (event) => {
   const url = String(window.location.href);
   print(url)
   if (url.includes("?") === true) {
-    print("debug")
-    print(inputArr)
     fillField = inputArr.join("");
-    print(fillField)
     document.getElementById('uInput').value = fillField;
+  }
+
+  print(outlineState)
+
+  if(outlineState === true){
+    document.getElementById('outline').innerHTML = "check_box";
   }
 
   if (svgState === true) {
     document.getElementById('export').disabled = false;
+    document.getElementById('uInput').disabled = true;
+    document.getElementById('width').disabled = true;
+    document.getElementById('height').disabled = true;
+    document.getElementById('curve').disabled = true;
     document.getElementById('svgmode').innerHTML = "check_box";
   }
 };
 
 function paramCheck() {
-  const url = new URL(window.location.href);
-  const params = new URLSearchParams(url.search);
+  const checkurl = new URL(window.location.href);
+  const params = new URLSearchParams(checkurl.search);
   
   svgState = (params.get('svgState') === 'true');
   inputArr = params.getAll('inputArr');
   ySVG = Number(params.get('yConfig')) + 40;
   xSVG = Number(params.get('xConfig'));
+  outlineState = (params.get('outline') === 'true');
+
+  root.style.setProperty('--primary', (params.get('themePrim')));
+  root.style.setProperty('--secondary', (params.get('themeSec')));
+  root.style.setProperty('--border', (params.get('themeBor')));
+
+  var strCheckurl = String(window.location.href);
+
   if (svgState === true) {
     hor = Number(params.get('horConfig'));
     ver = Number(params.get('verConfig'));
     w = Number(params.get('wConfig'));
     h = Number(params.get('hConfig'));
+    c = Number(params.get('cConfig'));
+    document.getElementById('width').value = w;
+    document.getElementById('height').value = h;
+    document.getElementById('curve').value = c;
+  }
+  else if(strCheckurl.includes("?") === true){
+    hor = Number(params.get('horConfig'));
+    ver = Number(params.get('verConfig'));
+    w = Number(params.get('wConfig'));
+    h = Number(params.get('hConfig'));
+    c = Number(params.get('cConfig'));
+    document.getElementById('width').value = w;
+    document.getElementById('height').value = h;
+    document.getElementById('curve').value = c;
   }
 }
 
 // styling
 
 function changeTheme() {
-
+  if(svgState !== true){
   var colCheck = getComputedStyle(root).getPropertyValue('--primary');
-
   switch (colSetting) {
 
     case 'default':
@@ -136,8 +164,11 @@ function changeTheme() {
       break;
   }
 }
+}
+
 
 function colTheme(colID) {
+  if(svgState !== true){
   var colSet = Number(colID);
   switch (colSet) {
 
@@ -165,7 +196,6 @@ function colTheme(colID) {
         root.style.setProperty('--secondary', '#1a2923');
         root.style.setProperty('--border', '#949c97');
       }
-      print(colCheck)
       break;
 
     case 3:
@@ -208,45 +238,51 @@ function colTheme(colID) {
       break;
 
   }
+  }
 }
 
 // checkbox processing
 
 function checkSet() {
+  if(svgState !== true){
   var checkState = String(document.getElementById('outline').innerHTML.replace(/\s/g, ''));
-
-  console.log(checkState);
-
-  if (checkState === 'check_box_outline_blank') {
-    document.getElementById('outline').innerHTML = "check_box";
-    outlineState = true;
-  } else if (checkState === 'check_box') {
-    document.getElementById('outline').innerHTML = "check_box_outline_blank";
-    outlineState = false;
+    if (checkState === 'check_box_outline_blank') {
+      document.getElementById('outline').innerHTML = "check_box";
+      outlineState = true;
+    } else if (checkState === 'check_box') {
+      document.getElementById('outline').innerHTML = "check_box_outline_blank";
+      outlineState = false;
+    }
   }
 }
 
 function svgMode() {
   window.history.pushState({}, document.title, window.location.pathname);
   const url = new URL(window.location.href + '?svgState=true&');
-  const params = new URLSearchParams(url.search);
-  params.set('inputArr', inputArr[0])
+  const svgparams = new URLSearchParams(url.search);
+  svgparams.set('inputArr', inputArr[0])
 
   inputArr.forEach((element, index) => {
     if (index > 0) {
-      params.append('inputArr', element);
+      svgparams.append('inputArr', element);
     }
 
-    params.set('xConfig', xConfig);
-    params.set('yConfig', yConfig);
-    params.set('horConfig', hor)
-    params.set('verConfig', ver)
-    params.set('wConfig', w)
-    params.set('hConfig', h)
+    svgparams.set('xConfig', xConfig);
+    svgparams.set('yConfig', yConfig);
+    svgparams.set('horConfig', hor)
+    svgparams.set('verConfig', ver)
+    svgparams.set('wConfig', w)
+    svgparams.set('hConfig', h)
+    svgparams.set('cConfig', c)
+    svgparams.set('outline', outlineState)
+    svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
+    svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
+    svgparams.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
+
   });
 
 
-  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  window.history.replaceState({}, '', `${location.pathname}?${svgparams}`);
   location.reload();
 }
 
@@ -257,6 +293,7 @@ function checkSVG() {
     svgMode();
   } else if (checkState === 'check_box') {
     document.getElementById('svgmode').innerHTML = "check_box_outline_blank";
+    refreshPage();
   }
 }
 
@@ -608,9 +645,7 @@ function getSVG() {
 
 }
 
-function exportSVG() {
-  getSVG();
-  save("export.svg");
+function refreshPage(){
 
   window.history.pushState({}, document.title, window.location.pathname);
 
@@ -631,10 +666,19 @@ function exportSVG() {
     refresh.set('verConfig', ver)
     refresh.set('wConfig', w)
     refresh.set('hConfig', h)
+    refresh.set('cConfig', c)
+    refresh.set('outline', outlineState)
+    refresh.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
+    refresh.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
   });
-
 
   window.history.replaceState({}, '', `${location.pathname}?${refresh}`);
   location.reload();
 
+}
+
+function exportSVG() {
+  getSVG();
+  save("export.svg");
+  refreshPage();
 }
