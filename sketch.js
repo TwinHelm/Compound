@@ -372,10 +372,13 @@ function draw() {
       yConfig = yPosAlt + spcScale;
 
       if (xPos > 1400) {
-        xConfig = 1450
         xPos = 50
         yPos = yPos + spcScale;
         yPosAlt = yPosAlt + spcScale;
+      }
+
+      if(yConfig > 215){
+        xConfig = 1525;
       }
 
       if (element === 'i' || element === 'j' || element === 'l') {
