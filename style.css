@@ -26,7 +26,7 @@ label{
   font-family: 'Open Sans';
   color: var(--secondary);
   font-size: 13px;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 5px;
   display: block;
 }
@@ -90,9 +90,21 @@ label{
   padding-top: 5px;
   padding-bottom: 5px;
   text-indent: 5px;
+  font-size: 14px;
 } 
 .textInput:focus{
   border-bottom: 1px solid var(--secondary);
+}
+
+a{
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+a:hover{
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+  text-decoration: underline dashed;
 }
 
 .slider {
@@ -196,7 +208,7 @@ button:focus {
 }
 
 .butCtr{
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 #export{
@@ -250,4 +262,58 @@ button:focus {
   padding-bottom: 100px;
   position: absolute;
   bottom: 0;
+}
+
+#desc{
+  font-family: 'Open Sans';
+  color: var(--secondary);
+  font-size: 13px;
+  padding-bottom: 200px;
+  position: absolute;
+  bottom: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#divider{
+  display: block;
+  height: 1px;
+  width: 230px;
+  border: 0;
+  border-top: 3px dotted var(--border);
+  padding-bottom: 185px;
+  margin-left: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.nav{
+  font-family: 'Open Sans';
+  color: var(--secondary);
+  font-size: 13px;
+  padding-bottom: 130px;
+  position: absolute;
+  bottom: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.nav:hover{
+  color: var(--border);
+}
+
+.text{
+  display: block;
+  font-family: 'Open Sans';
+  color: var(--secondary);
+  font-size: 13px;
+  padding-bottom: 130px;
+  position: absolute;
+  bottom: 0;
+  margin-left: 180px;
+  padding-right: 40px;
+}
+
+#title{
+  text-decoration: underline dashed;
 }
