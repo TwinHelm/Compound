@@ -26,7 +26,6 @@
   </head>
 
   <body>
-
     <div id="container">
       <div id="sidebar">
         <div class="inputcontainer">
@@ -47,17 +46,17 @@
             <label>Spacing (X)</label>
             <input type="range" min="25" max="75" value="35" class="slider" autocomplete="off" id="spacingX">
           </div>
-          <div class="paraGroup">
+          <div class="paraGroup" style="padding-bottom: 10px;">
             <label>Spacing (Y)</label>
             <input type="range" min="25" max="75" value="35" class="slider" autocomplete="off" id="spacingY">
           </div>
-          <div class="checkCtr" style="padding-top: 30px;">
+          <div class="checkCtr">
             <span class="material-symbols-outlined checkOff" onclick="checkSet();"" id="outline">
               check_box_outline_blank
             </span>
             <label class="checkLbl">Outline</label>  
           </div>
-          <div class="checkCtr" style="padding-top: 10px;">
+          <div class="checkCtr">
             <span class="material-symbols-outlined checkOff" onclick="checkSVG();"" id="svgmode">
               check_box_outline_blank
             </span>
@@ -67,7 +66,12 @@
             <button type="button" id="export" onclick="exportSVG();" disabled>Export SVG</button> 
           </div>
         </div>  
-
+        <p id ="desc"><a href="https://github.com/TwinHelm/compound" id="title">Compound</a> is a generative modular typeface, combining the use of geometric shapes within type design alongside the use 
+          of programming in typography. Inspired by the works of Jurriaan Schrofer. Created using p5.js and p5.js-svg.
+        </p>
+        <div id="divider"></div>
+        <p class="nav"><a href="https://github.com/TwinHelm/compound">Github</a></p>
+        <p class="text">© Jake Kalcher</p>
       <div class="hr"></div>
       <div>
         <span class="material-symbols-outlined theme" onclick="changeTheme();">
