@@ -251,7 +251,7 @@ function colTheme(colID) {
 function checkSet() {
   if(svgState !== true){
   var checkState = String(document.getElementById('outline').innerHTML.replace(/\s/g, ''));
-    if (checkState === 'check_box_outline_blank') {
+    if (checkState === 'check_box_outline_blank' && inputArr.length > 0) {
       document.getElementById('outline').innerHTML = "check_box";
       outlineState = true;
     } else if (checkState === 'check_box') {
@@ -262,38 +262,40 @@ function checkSet() {
 }
 
 function svgMode() {
-  window.history.pushState({}, document.title, window.location.pathname);
-  const url = new URL(window.location.href + '?svgState=true&');
-  const svgparams = new URLSearchParams(url.search);
-  svgparams.set('inputArr', inputArr[0])
-
-  inputArr.forEach((element, index) => {
-    if (index > 0) {
-      svgparams.append('inputArr', element);
-    }
-
-    svgparams.set('xConfig', xConfig);
-    svgparams.set('yConfig', yConfig);
-    svgparams.set('horConfig', hor)
-    svgparams.set('verConfig', ver)
-    svgparams.set('wConfig', w)
-    svgparams.set('hConfig', h)
-    svgparams.set('cConfig', c)
-    svgparams.set('outline', outlineState)
-    svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
-    svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
-    svgparams.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
-
-  });
-
-
-  window.history.replaceState({}, '', `${location.pathname}?${svgparams}`);
-  location.reload();
+  if(inputArr.length > 0){
+    window.history.pushState({}, document.title, window.location.pathname);
+    const url = new URL(window.location.href + '?svgState=true&');
+    const svgparams = new URLSearchParams(url.search);
+    svgparams.set('inputArr', inputArr[0])
+  
+    inputArr.forEach((element, index) => {
+      if (index > 0) {
+        svgparams.append('inputArr', element);
+      }
+  
+      svgparams.set('xConfig', xConfig);
+      svgparams.set('yConfig', yConfig);
+      svgparams.set('horConfig', hor)
+      svgparams.set('verConfig', ver)
+      svgparams.set('wConfig', w)
+      svgparams.set('hConfig', h)
+      svgparams.set('cConfig', c)
+      svgparams.set('outline', outlineState)
+      svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
+      svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
+      svgparams.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
+  
+    });
+  
+  
+    window.history.replaceState({}, '', `${location.pathname}?${svgparams}`);
+    location.reload();
+  }
 }
 
 function checkSVG() {
   var checkState = String(document.getElementById('svgmode').innerHTML.replace(/\s/g, ''));
-  if (checkState === 'check_box_outline_blank') {
+  if (checkState === 'check_box_outline_blank' && inputArr.length > 0) {
     document.getElementById('svgmode').innerHTML = "check_box";
     svgMode();
   } else if (checkState === 'check_box') {
@@ -692,6 +694,7 @@ function refreshPage(){
     refresh.set('outline', outlineState)
     refresh.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
     refresh.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
+    refresh.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
   });
 
   window.history.replaceState({}, '', `${location.pathname}?${refresh}`);
