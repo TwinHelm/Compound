@@ -374,12 +374,16 @@ function draw() {
   var xPos = 50;
   var yPos = 100;
   var yPosAlt = 65;
-  var spcScale = 150 + (ver * 4);
+  var xAlign = sx - 35;
+  var yAlign = sy - 35;
+  var spcScale = 170 + (ver * 4) + yAlign;
+
+  yPos = yPos + yAlign;
 
   inputArr.forEach((element, index) => {
 
     if (index > 0) {
-      xPos = xPos + 75;
+      xPos = xPos + 75 + (xAlign * 2);
       xConfig = xPos + 100 + hor;
       yConfig = yPosAlt + spcScale;
 
@@ -500,7 +504,7 @@ function draw() {
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         rect(((xPos + (sx *  2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
         rect(((xPos + (sx *  2)) + (hor * 2)), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
-        xPos = xPos + sy;
+        xPos = xPos + sx;
         break;
 
       case 'n':
@@ -575,7 +579,7 @@ function draw() {
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         rect(((xPos + (sx *  2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
         rect(((xPos + (sx *  2)) + (hor * 2)), ((yPos + sy) + (ver * 2)), w, h, 0, 0, c, 0)
-        xPos = xPos + sy;
+        xPos = xPos + sx;
         break;
 
       case 'x':
