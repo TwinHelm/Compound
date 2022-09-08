@@ -17,6 +17,8 @@ let hor = 0;
 let ver = 0;
 let g = 35;
 let c = 25;
+let sx = 35;
+let sy = 35;
 let inputArr = [];
 let detectArr = [];
 
@@ -340,6 +342,15 @@ function setup() {
     c = Number(cSlider.value);
   });
 
+  const sxSlider = document.getElementById('spacingX');
+  sxSlider.addEventListener('input', function (evt) {
+    sx = Number(sxSlider.value);
+  });
+
+  const sySlider = document.getElementById('spacingY');
+  sySlider.addEventListener('input', function (evt) {
+    sy = Number(sySlider.value);
+  });
 }
 
 // canvas rendering
@@ -350,6 +361,7 @@ function draw() {
     var setBg = getComputedStyle(root).getPropertyValue('--primary');
     background(setBg);
   }
+
   var setFill = getComputedStyle(root).getPropertyValue('--secondary');
 
   if (outlineState === true) {
@@ -383,9 +395,9 @@ function draw() {
 
       if (element === 'i' || element === 'j' || element === 'l') {
         if (hor > 0) {
-          xPos = xPos - g - hor;
+          xPos = xPos - sx - hor;
         } else {
-          xPos = xPos - g;
+          xPos = xPos - sx;
         }
       }
     }
@@ -394,198 +406,198 @@ function draw() {
 
       case 'a':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         break;
 
       case 'b':
         rect(xPos, yPosAlt, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, c, 0, c)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, c, 0, c)
         break;
 
       case 'c':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, c)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
         break;
 
       case 'd':
-        rect(((xPos + g) + hor), yPosAlt, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, c, 0, c, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, c, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, c, 0, c, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, c, 0, c)
         break;
 
       case 'e':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
         break;
 
       case 'f':
         rect(xPos, yPosAlt, w, h, c, 0, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), yPosAlt, w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, c, 0, c)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, c, 0, c)
         break;
 
       case 'g':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g * 2) + (ver * 3)), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g * 2) + (ver * 3)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy * 2) + (ver * 3)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, c, 0, c, 0)
         break;
 
       case 'h':
         rect(xPos, yPosAlt, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, c, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, c, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         break;
 
       case 'i':
-        rect(((xPos + g) + hor), yPosAlt, w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         break;
 
       case 'j':
-        rect(((xPos + g) + hor), yPosAlt, w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g * 2) + (ver * 3)), w, h, 0, 0, c, 0)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, c, 0)
         break;
 
       case 'k':
         rect(xPos, yPosAlt, w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, c, 0, c, 0)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, c, 0, c, 0)
         break;
 
       case 'l':
-        rect(((xPos + g) + hor), yPosAlt, w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         break;
 
       case 'm':
         rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + (g * 2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
-        rect(((xPos + (g * 2)) + (hor * 2)), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        xPos = xPos + g;
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + (sx *  2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
+        rect(((xPos + (sx *  2)) + (hor * 2)), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        xPos = xPos + sy;
         break;
 
       case 'n':
         rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         break;
 
       case 'o':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, c)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
         break;
 
       case 'p':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, c)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
-        rect(xPos, ((yPos + g * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(xPos, ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
         break;
 
       case 'q':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
         break;
 
       case 'r':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, c)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         break;
 
       case 's':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, c)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, c, 0)
         break;
 
       case 't':
         rect(xPos, yPosAlt, w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPosAlt + g) + ver), w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + ver * 2), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + ver * 2), w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), ((yPosAlt + g) + ver), w, h, 0, 0, c, 0)
+        rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, c, 0)
         break;
 
       case 'u':
         rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         break;
 
       case 'v':
         rect(xPos, yPos + ver, w, h, 0, c, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, c, 0, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, c, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, c, 0)
         break;
 
       case 'w':
         rect(xPos, yPos + ver, w, h, 0, c, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + (g * 2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
-        rect(((xPos + (g * 2)) + (hor * 2)), ((yPos + g) + (ver * 2)), w, h, 0, 0, c, 0)
-        xPos = xPos + g;
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + (sx *  2)) + (hor * 2)), yPos + ver, w, h, 0, c, 0, 0)
+        rect(((xPos + (sx *  2)) + (hor * 2)), ((yPos + sy) + (ver * 2)), w, h, 0, 0, c, 0)
+        xPos = xPos + sy;
         break;
 
       case 'x':
         rect(xPos, yPos + ver, w, h, 0, c, 0, c)
-        rect(((xPos + g) + hor), yPos + ver, w, h, c, 0, c, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, c, 0, c, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
         break;
 
       case 'y':
         rect(xPos, yPos + ver, w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, 0, 0, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, c)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, 0, 0, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
         break;
 
       case 'z':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
-        rect(((xPos + g) + hor), yPos + ver, w, h, 0, 0, c, 0)
-        rect(xPos, ((yPos + g) + (ver * 2)), w, h, c, 0, 0, 0)
-        rect(((xPos + g) + hor), ((yPos + g) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, 0, c, 0)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, c, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
         break;
     }
 
