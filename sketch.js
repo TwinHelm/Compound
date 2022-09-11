@@ -413,12 +413,12 @@ function draw() {
       case 'a':
         rect(xPos, yPos + ver, w, h, c, 0, c, 0)
         rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
-        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
+        rect(xPos, ((yPos + sy) + (ver * 2)), w, h, c, 0, 0, c)
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         break;
 
       case 'b':
-        rect(xPos, yPosAlt, w, h, 0, c, 0, 0)
+        rect(xPos, yPosAlt, w, h, 0, 0, 0, 0)
         rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, c, 0, c, 0)
@@ -433,7 +433,7 @@ function draw() {
         break;
 
       case 'd':
-        rect(((xPos + sx) + hor), yPosAlt, w, h, c, 0, 0, 0)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPosAlt + sy) + ver), w, h, c, 0, c, 0)
@@ -442,7 +442,7 @@ function draw() {
 
       case 'e':
         rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
-        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, 0)
+        rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, c, 0)
         rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
         break;
@@ -451,7 +451,7 @@ function draw() {
         rect(xPos, yPosAlt, w, h, c, 0, 0, 0)
         rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
-        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, 0, c, c)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, c, 0, c)
         break;
 
@@ -461,11 +461,11 @@ function draw() {
         rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy * 2) + (ver * 3)), w, h, 0, c, 0, c)
-        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, c, 0)
         break;
 
       case 'h':
-        rect(xPos, yPosAlt, w, h, 0, c, 0, 0)
+        rect(xPos, yPosAlt, w, h, 0, 0, 0, 0)
         rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, c, 0, 0)
@@ -473,13 +473,13 @@ function draw() {
         break;
 
       case 'i':
-        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, 0, c, c)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         break;
 
       case 'j':
-        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, c, 0, c)
+        rect(((xPos + sx) + hor), yPosAlt, w, h, 0, 0, c, c)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, 0, 0, 0, 0)
         rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, c, 0)
@@ -546,18 +546,18 @@ function draw() {
         break;
 
       case 's':
-        rect(xPos, yPos + ver, w, h, c, 0, 0, 0)
+        rect(xPos, yPos + ver, w, h, c, 0, 0, c)
         rect(((xPos + sx) + hor), yPos + ver, w, h, 0, c, 0, c)
         rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, c, 0, c)
-        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, c, c, 0)
         break;
 
       case 't':
         rect(xPos, yPosAlt, w, h, 0, 0, 0, 0)
         rect(xPos, ((yPosAlt + sy) + ver), w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy) + ver * 2), w, h, 0, 0, 0, c)
-        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, c, 0, c, 0)
         rect(((xPos + sx) + hor), ((yPosAlt + sy) + ver), w, h, 0, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + ver * 2), w, h, c, 0, c, 0)
         break;
 
       case 'u':
@@ -596,14 +596,14 @@ function draw() {
         rect(((xPos + sx) + hor), yPos + ver, w, h, 0, 0, 0, 0)
         rect(xPos, ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, c)
         rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, 0, 0, 0, 0)
-        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, 0, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy * 2) + (ver * 3)), w, h, 0, 0, c, 0)
         break;
 
       case 'z':
-        rect(xPos, yPos + ver, w, h, c, 0, c, 0)
+        rect(xPos, yPos + ver, w, h, 0, 0, c, 0)
         rect(((xPos + sx) + hor), yPos + ver, w, h, 0, 0, c, 0)
         rect(xPos, ((yPos + sy) + (ver * 2)), w, h, c, 0, 0, 0)
-        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, c, 0)
+        rect(((xPos + sx) + hor), ((yPos + sy) + (ver * 2)), w, h, c, 0, 0, 0)
         break;
     }
 
