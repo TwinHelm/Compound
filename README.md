@@ -10,9 +10,12 @@ Compound has been created with the use of [p5.js](https://github.com/processing/
 
 ## How to use this typeface
 
-This typeface is currently hosted online with a web based interface, with an option to export the output as an SVG. Due to its generative nature, Compound can be adapted from its default values to better suit its user's needs.
-
 [https://twinhelm.github.io/Compound/](https://twinhelm.github.io/Compound/)
+
+This typeface is currently hosted online with a web based interface, with an option to export the output as an SVG. Due to its generative nature, Compound can be adapted from its default values to better suit its user's needs. 
+
+*To avoid confusion, only the letters A to Z have been included. Introducing numbers and special characters would not be ideal due to the structural framework of the typeface.*
+
 
 ## Will Compound be released as a font file?
 
