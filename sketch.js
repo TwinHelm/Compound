@@ -75,6 +75,8 @@ function paramCheck() {
     w = Number(params.get('wConfig'));
     h = Number(params.get('hConfig'));
     c = Number(params.get('cConfig'));
+    sx = Number(params.get('sxConfig'));
+    sy = Number(params.get('syConfig'));
     document.getElementById('width').value = w;
     document.getElementById('height').value = h;
     document.getElementById('curve').value = c;
@@ -85,6 +87,8 @@ function paramCheck() {
     w = Number(params.get('wConfig'));
     h = Number(params.get('hConfig'));
     c = Number(params.get('cConfig'));
+    sx = Number(params.get('sxConfig'));
+    sy = Number(params.get('syConfig'));
     document.getElementById('width').value = w;
     document.getElementById('height').value = h;
     document.getElementById('curve').value = c;
@@ -280,6 +284,8 @@ function svgMode() {
       svgparams.set('wConfig', w)
       svgparams.set('hConfig', h)
       svgparams.set('cConfig', c)
+      svgparams.set('sxConfig', sx)
+      svgparams.set('syConfig', sy)
       svgparams.set('outline', outlineState)
       svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
       svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
@@ -691,6 +697,8 @@ function refreshPage(){
     refresh.set('wConfig', w)
     refresh.set('hConfig', h)
     refresh.set('cConfig', c)
+    refresh.set('sxConfig', sx)
+    refresh.set('syConfig', sy)
     refresh.set('outline', outlineState)
     refresh.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
     refresh.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
