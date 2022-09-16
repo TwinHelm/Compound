@@ -49,6 +49,8 @@ window.onload = (event) => {
     document.getElementById('width').disabled = true;
     document.getElementById('height').disabled = true;
     document.getElementById('curve').disabled = true;
+    document.getElementById('spacingX').disabled = true;
+    document.getElementById('spacingY').disabled = true;
     document.getElementById('svgmode').innerHTML = "check_box";
   }
 };
@@ -80,6 +82,8 @@ function paramCheck() {
     document.getElementById('width').value = w;
     document.getElementById('height').value = h;
     document.getElementById('curve').value = c;
+    document.getElementById('spacingX').value = sx;
+    document.getElementById('spacingY').value = sy;
   }
   else if(strCheckurl.includes("?") === true){
     hor = Number(params.get('horConfig'));
@@ -92,6 +96,8 @@ function paramCheck() {
     document.getElementById('width').value = w;
     document.getElementById('height').value = h;
     document.getElementById('curve').value = c;
+    document.getElementById('spacingX').value = sx;
+    document.getElementById('spacingY').value = sy;
   }
 }
 
