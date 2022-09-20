@@ -12,9 +12,7 @@ html, body{
   --border: #252525;
 }
 
-
-
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -59,8 +57,28 @@ label{
   border-right: 1px solid var(--border);
   position: sticky;
   top: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--border);
 }
 
+#sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: var(--border);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+}
 
 #main {
  -ms-flex: 1;
@@ -232,10 +250,9 @@ button:focus {
 
 .theme{
   color: var(--secondary);
-  margin-left: 40px;
-  margin-bottom: 40px;
+  padding-top: 70px;
   position: absolute;
-  bottom: 0;
+  padding-bottom: 30px;
 }
 
 .theme:hover{
@@ -244,35 +261,23 @@ button:focus {
 
 .themeCircle{
   -webkit-text-stroke: 1px var(--border);
-  margin-bottom: 40px;
+  padding-top: 70px;
   position: absolute;
-  bottom: 0;
+  padding-bottom: 30px;
 }
 
 .themeCircle:hover{
   cursor: pointer;
 }
 
-.hr {
-  display: block;
-  height: 1px;
-  width: 310px;
-  border: 0;
-  border-top: 1px solid var(--border);
-  padding-bottom: 100px;
-  position: absolute;
-  bottom: 0;
-}
-
 #desc{
   font-family: 'Open Sans';
   color: var(--secondary);
   font-size: 13px;
-  padding-bottom: 200px;
   position: absolute;
-  bottom: 0;
-  padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 #divider{
@@ -281,20 +286,15 @@ button:focus {
   width: 230px;
   border: 0;
   border-top: 3px dotted var(--border);
-  padding-bottom: 185px;
-  margin-left: 40px;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  margin-top: 190px;
 }
 
 .nav{
   font-family: 'Open Sans';
   color: var(--secondary);
   font-size: 13px;
-  padding-bottom: 130px;
   position: absolute;
-  bottom: 0;
-  padding-left: 40px;
   padding-right: 40px;
 }
 
@@ -307,11 +307,7 @@ button:focus {
   font-family: 'Open Sans';
   color: var(--secondary);
   font-size: 13px;
-  padding-bottom: 130px;
-  position: absolute;
-  bottom: 0;
-  margin-left: 180px;
-  padding-right: 40px;
+  padding-left: 140px;
 }
 
 #title{
