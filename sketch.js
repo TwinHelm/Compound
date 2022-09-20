@@ -30,8 +30,7 @@ window.onload = (event) => {
   const url = String(window.location.href);
   
   if (url.includes("?") === true) {
-    fillField = inputArr.join("");
-    document.getElementById('uInput').value = fillField;
+    document.getElementById('uInput').value = inputArr.join("");
   }
 
   if (url.includes("?") === false){
@@ -60,7 +59,7 @@ function paramCheck() {
   const params = new URLSearchParams(checkurl.search);
   
   svgState = (params.get('svgState') === 'true');
-  inputArr = params.getAll('inputArr');
+  inputArr = Array.from(String(params.getAll('inputArr')));
   ySVG = Number(params.get('yConfig')) + 40;
   xSVG = Number(params.get('xConfig'));
   outlineState = (params.get('outline') === 'true');
@@ -276,29 +275,21 @@ function svgMode() {
     window.history.pushState({}, document.title, window.location.pathname);
     const url = new URL(window.location.href + '?svgState=true&');
     const svgparams = new URLSearchParams(url.search);
-    svgparams.set('inputArr', inputArr[0])
-  
-    inputArr.forEach((element, index) => {
-      if (index > 0) {
-        svgparams.append('inputArr', element);
-      }
-  
-      svgparams.set('xConfig', xConfig);
-      svgparams.set('yConfig', yConfig);
-      svgparams.set('horConfig', hor)
-      svgparams.set('verConfig', ver)
-      svgparams.set('wConfig', w)
-      svgparams.set('hConfig', h)
-      svgparams.set('cConfig', c)
-      svgparams.set('sxConfig', sx)
-      svgparams.set('syConfig', sy)
-      svgparams.set('outline', outlineState)
-      svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
-      svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
-      svgparams.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
-  
-    });
-  
+    
+    svgparams.set('xConfig', xConfig);
+    svgparams.set('yConfig', yConfig);
+    svgparams.set('horConfig', hor)
+    svgparams.set('verConfig', ver)
+    svgparams.set('wConfig', w)
+    svgparams.set('hConfig', h)
+    svgparams.set('cConfig', c)
+    svgparams.set('sxConfig', sx)
+    svgparams.set('syConfig', sy)
+    svgparams.set('outline', outlineState)
+    svgparams.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
+    svgparams.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
+    svgparams.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
+    svgparams.set('inputArr', inputArr.join(""))
   
     window.history.replaceState({}, '', `${location.pathname}?${svgparams}`);
     location.reload();
@@ -689,13 +680,7 @@ function refreshPage(){
 
   console.log(url)
   const refresh = new URLSearchParams(url.search);
-  refresh.set('inputArr', inputArr[0])
-
-  inputArr.forEach((element, index) => {
-    if (index > 0) {
-      refresh.append('inputArr', element);
-    }
-
+    refresh.set('inputArr', inputArr[0])
     refresh.set('xConfig', xConfig);
     refresh.set('yConfig', yConfig);
     refresh.set('horConfig', hor)
@@ -709,10 +694,10 @@ function refreshPage(){
     refresh.set('themePrim', (getComputedStyle(root).getPropertyValue('--primary')))
     refresh.set('themeSec', (getComputedStyle(root).getPropertyValue('--secondary')))
     refresh.set('themeBor', (getComputedStyle(root).getPropertyValue('--border')))
-  });
+    refresh.set('inputArr', inputArr.join(""))
 
-  window.history.replaceState({}, '', `${location.pathname}?${refresh}`);
-  location.reload();
+    window.history.replaceState({}, '', `${location.pathname}?${refresh}`);
+    location.reload();
 
 }
 
