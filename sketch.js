@@ -408,7 +408,7 @@ function draw() {
       }
 
       if(yConfig > 215){
-        xConfig = 1525;
+        xConfig = 1575;
       }
 
       if (element === 'i' || element === 'j' || element === 'l') {
